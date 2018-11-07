@@ -29,5 +29,7 @@ module Clocker
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.x.sage_portal_url = ENV.fetch('SAGE_POTRAL_URL')
   end
 end

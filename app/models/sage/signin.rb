@@ -1,8 +1,9 @@
 module Sage
   class Signin
+    include Support::Capybara
+
     LOGIN_ELEMENT_ID = '#ctl00_cphContent_cmdLogin'.freeze
     PASS_FIELD = 'ctl00_cphContent_txtPassword_I'.freeze
-    PORTAL_URL = 'https://portal106427097.bpo-sage.de/mportal'.freeze
     PRESENT_ELEMENT_AFTER_LOGIN = '#navBarCompanyInfo'.freeze
     SIGNIN_TIMEOUT = 10.freeze
     USER_FIELD = 'ctl00_cphContent_txtUsername_I'.freeze
@@ -13,7 +14,7 @@ module Sage
     end
 
     def call
-      browser.visit PORTAL_URL
+      browser.visit Rails.configuration.x.sage_portal_url
 
       browser.fill_in(USER_FIELD, with: user)
       browser.fill_in(PASS_FIELD, with: pass)
@@ -29,10 +30,6 @@ module Sage
     private
 
     attr_reader :user, :pass
-
-    def browser
-      @browser ||= Capybara.current_session
-    end
 
     def sign_in_successful?(browser)
       browser.find(PRESENT_ELEMENT_AFTER_LOGIN).present?

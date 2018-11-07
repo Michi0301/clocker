@@ -57,3 +57,7 @@ gem 'poltergeist'
 gem 'phantomjs', require: 'phantomjs/poltergeist'
 # gem 'selenium-webdriver'
 # gem 'chromedriver-helper'
+
+group :development, :test do
+  gem 'dotenv-rails'
+end
