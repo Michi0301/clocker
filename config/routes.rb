@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :sage do
       resource :clockin, only: :create
       resource :clockout, only: :create
+      resource :current, only: :create
     end
   end
 end
