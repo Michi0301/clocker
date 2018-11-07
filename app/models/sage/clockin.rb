@@ -2,7 +2,7 @@ module Sage
   class Clockin
     include Support::Capybara
 
-    CLOCKIN_ELEMENT_ID = '#ctl00_cphContent_terminal_btnKommen_CD'.freeze
+    CLOCKIN_ELEMENT_ID = '#ctl00_cphContent_terminal_btnKommen'.freeze
 
     def call
       browser.find(CLOCKIN_ELEMENT_ID).click

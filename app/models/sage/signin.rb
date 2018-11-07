@@ -14,6 +14,15 @@ module Sage
     end
 
     def call
+      ensure_clean_state!
+      sign_in
+    end
+
+    private
+
+    attr_reader :user, :pass
+
+    def sign_in
       browser.visit Rails.configuration.x.sage_portal_url
 
       browser.fill_in(USER_FIELD, with: user)
@@ -26,10 +35,6 @@ module Sage
     rescue Timeout::Error
       false
     end
-
-    private
-
-    attr_reader :user, :pass
 
     def sign_in_successful?(browser)
       browser.find(PRESENT_ELEMENT_AFTER_LOGIN).present?

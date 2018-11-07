@@ -5,13 +5,17 @@ module Support
     end
 
     def wait_for_ajax
-      Timeout.timeout(Capybara.default_max_wait_time) do
+      Timeout.timeout(::Capybara.default_max_wait_time) do
         loop until finished_all_ajax_requests?
       end
     end
 
     def finished_all_ajax_requests?
       browser.evaluate_script('jQuery.active').zero?
+    end
+
+    def ensure_clean_state!
+      ::Capybara.reset_sessions!
     end
   end
 end
