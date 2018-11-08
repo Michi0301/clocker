@@ -10,6 +10,12 @@ module Api
         fail RuntimeError, 'Signin failed at 3rd party.' unless ::Sage::Signin.new(user: sign_in_params[:username], pass: sign_in_params[:password]).call
       end
 
+      def log_activity
+        current_user = User.find_or_create_by name: sign_in_params[:username]
+
+        ClockEvent.create!(user: current_user, event_type: controller_name.singularize)
+      end
+
       def sign_in_params
         params.permit(:username, :password)
       end

@@ -9,7 +9,7 @@ class CreateClockEvents < ActiveRecord::Migration[5.2]
     add_index :users, :name, unique: true
 
     create_table :clock_events do |t|
-      t.integer :event_type, null: false
+      t.string :event_type, null: false
       t.belongs_to :user
 
       t.timestamps
