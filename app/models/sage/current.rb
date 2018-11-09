@@ -6,6 +6,12 @@ module Sage
 
     def call
       browser.find(CURRENT_STATE_ELEMENT_ID).text
+
+      rescue Capybara::ElementNotFound => e
+        message = "Fetching current status failed: #{e.message}"
+        Rails.logger.fatal message
+
+        fail RuntimeError, message
     end
   end
 end

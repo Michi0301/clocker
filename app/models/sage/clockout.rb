@@ -9,6 +9,11 @@ module Sage
       wait_for_ajax
 
       true
+      rescue Capybara::ElementNotFound => e
+        message = "Clockout failed: #{e.message}"
+        Rails.logger.fatal message
+
+        fail RuntimeError, message
     end
   end
 end

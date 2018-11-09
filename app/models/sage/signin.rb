@@ -32,8 +32,11 @@ module Sage
       await_signin(browser)
 
       true
-    rescue Timeout::Error
-      false
+    rescue Timeout::Error, Capybara::ElementNotFound => e
+      message = "Signin failed: #{e.message}"
+      Rails.logger.fatal message
+
+      fail RuntimeError, message
     end
 
     def sign_in_successful?(browser)
