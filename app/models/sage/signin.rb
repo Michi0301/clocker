@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module Sage
   class Signin
     include Support::Capybara
 
-    LOGIN_ELEMENT_ID = '#ctl00_cphContent_cmdLogin'.freeze
-    PASS_FIELD = 'ctl00_cphContent_txtPassword_I'.freeze
-    PRESENT_ELEMENT_AFTER_LOGIN = '#navBarCompanyInfo'.freeze
-    SIGNIN_TIMEOUT = 10.freeze
-    USER_FIELD = 'ctl00_cphContent_txtUsername_I'.freeze
+    LOGIN_ELEMENT_ID = '#ctl00_cphContent_cmdLogin'
+    PASS_FIELD = 'ctl00_cphContent_txtPassword_I'
+    PRESENT_ELEMENT_AFTER_LOGIN = '#navBarCompanyInfo'
+    SIGNIN_TIMEOUT = 10
+    USER_FIELD = 'ctl00_cphContent_txtUsername_I'
 
     def initialize(user:, pass:)
       @user = user
@@ -36,7 +38,7 @@ module Sage
       message = "Signin failed: #{e.message}"
       Rails.logger.fatal message
 
-      fail RuntimeError, message
+      raise message
     end
 
     def sign_in_successful?(browser)

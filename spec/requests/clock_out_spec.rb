@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.feature 'Clockout out', type: :request do
   describe 'A user clocks out' do
     let(:signin) { double('signin') }
     let(:clockout) { double('clockout') }
-    let(:headers) { {'ACCEPT' => 'application/json'} }
+    let(:headers) { { 'ACCEPT' => 'application/json' } }
     let(:request) { post '/api/sage/clockout', params: { username: 'myuser', password: 'mypass' }, headers: headers }
 
     context 'Sign in at 3rd party succeeds' do

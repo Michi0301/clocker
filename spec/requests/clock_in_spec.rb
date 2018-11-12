@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.feature 'Clocking in', type: :request do
   describe 'A user clocks in' do
     let(:signin) { double('signin') }
     let(:clockin) { double('clockin') }
-    let(:headers) { {'ACCEPT' => 'application/json'} }
+    let(:headers) { { 'ACCEPT' => 'application/json' } }
     let(:request) { post '/api/sage/clockin', params: { username: 'myuser', password: 'mypass' }, headers: headers }
 
     context 'Sign in at 3rd party succeeds' do

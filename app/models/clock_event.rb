@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ClockEvent < ApplicationRecord
   belongs_to :user
 

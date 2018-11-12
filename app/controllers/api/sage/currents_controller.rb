@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module Sage
     class CurrentsController < BaseController
@@ -5,7 +7,7 @@ module Api
 
       def create
         state = ::Sage::Current.new.call
-        render json: { success: true, current_state: state}, status: :created
+        render json: { success: true, current_state: state }, status: :created
       end
     end
   end
