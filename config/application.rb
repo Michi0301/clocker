@@ -30,6 +30,10 @@ module Clocker
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    # Set the timezone
+    config.time_zone = 'Berlin'
+
+    # Custom configuration
     config.x.sage_portal_url = ENV.fetch('SAGE_POTRAL_URL')
   end
 end
