@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module Sage
-  class Clockout < BaseAction
+  class Pause < BaseAction
     private
 
     def action_element
-      '#ctl00_cphContent_terminal_btnGehen'
+      '#ctl00_cphContent_terminal_btnPause'
     end
   end
 end
