@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resource :clockin, only: :create
       resource :clockout, only: :create
       resource :current, only: :create
+      resource :pause, only: :create
     end
   end
 end
