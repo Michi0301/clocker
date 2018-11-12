@@ -13,7 +13,7 @@ end
 
 Capybara.default_driver = :poltergeist
 
-Capybara.default_max_wait_time = 10
+Capybara.default_max_wait_time = 30
 
 # For visual debugging
 # require 'selenium/webdriver'

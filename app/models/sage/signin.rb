@@ -7,7 +7,7 @@ module Sage
     LOGIN_ELEMENT_ID = '#ctl00_cphContent_cmdLogin'
     PASS_FIELD = 'ctl00_cphContent_txtPassword_I'
     PRESENT_ELEMENT_AFTER_LOGIN = '#navBarCompanyInfo'
-    SIGNIN_TIMEOUT = 10
+    SIGNIN_TIMEOUT = 20
     USER_FIELD = 'ctl00_cphContent_txtUsername_I'
 
     def initialize(user:, pass:)
