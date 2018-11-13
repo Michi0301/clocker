@@ -4,7 +4,7 @@ module Api
   module Sage
     class PausesController < BaseController
       def create
-        ::Sage::Pause.new.call
+        PauseJob.perform_later(username: username, password: password)
         render json: { success: true }, status: :created
       end
     end

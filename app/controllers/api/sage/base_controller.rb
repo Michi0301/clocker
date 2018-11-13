@@ -6,23 +6,32 @@ module Api
       include ::ActionController::HttpAuthentication::Basic
 
       before_action :log_activity
-      before_action :signin, only: :create
       rescue_from RuntimeError, with: :render_error
 
       private
 
       def signin
-        basic_auth_username, basic_auth_password = user_name_and_password(request)
+        ::Sage::Signin.new(user: username, pass: password).call
+      end
 
-        if basic_auth_username.present? && basic_auth_password.present?
-          ::Sage::Signin.new(user: basic_auth_username, pass: basic_auth_password).call
-        else
-          ::Sage::Signin.new(user: sign_in_params[:username], pass: sign_in_params[:password]).call
-        end
+      def basic_auth_username
+        user_name_and_password(request).first
+      end
+
+      def basic_auth_password
+        user_name_and_password(request).last
+      end
+
+      def username
+        sign_in_params[:username].presence || basic_auth_username.presence
+      end
+
+      def password
+        sign_in_params[:password].presence || basic_auth_password.presence
       end
 
       def log_activity
-        current_user = User.find_or_create_by name: sign_in_params[:username]
+        current_user = User.find_or_create_by(name: username)
 
         ClockEvent.create!(user: current_user, event_type: controller_name.singularize)
       end

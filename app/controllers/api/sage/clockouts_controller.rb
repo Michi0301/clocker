@@ -4,7 +4,8 @@ module Api
   module Sage
     class ClockoutsController < BaseController
       def create
-        ::Sage::Clockout.new.call
+        ClockoutJob.perform_later(username: username, password: password)
+
         render json: { success: true }, status: :created
       end
     end
