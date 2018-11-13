@@ -35,6 +35,9 @@ module Clocker
     # Set the timezone
     config.time_zone = 'Berlin'
 
+    # Use delayed job as active job backend
+    config.active_job.queue_adapter = :delayed_job
+
     # Custom configuration
     config.x.sage_portal_url = ENV.fetch('SAGE_POTRAL_URL')
   end

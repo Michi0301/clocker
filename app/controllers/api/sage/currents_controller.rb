@@ -3,6 +3,7 @@
 module Api
   module Sage
     class CurrentsController < BaseController
+      before_action :signin, only: :create
       skip_before_action :log_activity
 
       def create

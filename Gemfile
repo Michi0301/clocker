@@ -53,6 +53,8 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Custom
+gem 'delayed_job'
+gem 'delayed_job_active_record'
 gem 'capybara'
 gem 'phantomjs', require: 'phantomjs/poltergeist'
 gem 'poltergeist'
