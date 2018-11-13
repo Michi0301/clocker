@@ -1,24 +1,82 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Clocker enables restful clocking apis for the Sage HR portal.
 
-Things you may want to cover:
+The portal is accessed via screenscraping.
 
-* Ruby version
+An audit trail is provided via the `ClockEvent` model.
 
-* System dependencies
+## Configuration
 
-* Configuration
+Set the environment variable `SAGE_POTRAL_URL` to point to your Sage HR portal. 
 
-* Database creation
+## Api
 
-* Database initialization
+All requests require: `Content-Type: application/json`
 
-* How to run the test suite
+Either submit your credentials via the request payload:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+{
+  "username": "HomerS",
+  "password": "Doughnut"
+}
+```
 
-* Deployment instructions
+**or use HTTP Basic Auth (in this case, no payload is required).**
 
-* ...
+Supported actions:
+
+### POST /api/sage/clockin
+
+Response: 
+
+Success:
+
+Status: `201`
+```
+{
+  "success": true
+}
+```
+### POST /api/sage/clockout
+
+Response:
+
+Success:
+
+Status: `201`
+```
+{
+  "success": true
+}
+```
+
+### POST /api/sage/pause
+
+Response:
+
+Success:
+
+Status: `201`
+```
+{
+  "success": true
+}
+```
+
+### POST /api/sage/current
+
+Response:
+
+Success:
+
+Status: `201`
+```
+{
+  "success": true,
+  "current_state": "absent"
+}
+```
+
+
