@@ -59,6 +59,7 @@ gem 'capybara'
 gem 'phantomjs', require: 'phantomjs/poltergeist'
 gem 'poltergeist'
 gem 'rubocop'
+gem 'bugsnag'
 # gem 'selenium-webdriver'
 # gem 'chromedriver-helper'
 
