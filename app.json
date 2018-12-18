@@ -1,0 +1,12 @@
+{
+  "name": "clocker",
+  "description": "Building APIs for a time booking service via web scraping",
+  "repository": "https://github.com/Michi0301/clocker",
+  "keywords": ["api", "time", "tracking"],
+  "env": {
+    "SAGE_POTRAL_URL": {
+      "description": "The target SAGE HR portal URL",
+      "value": "https://my-portal-url.com"
+    }
+  }
+}

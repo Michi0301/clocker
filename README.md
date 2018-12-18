@@ -8,7 +8,13 @@ An audit trail is provided via the `ClockEvent` model.
 
 ## Configuration
 
-Set the environment variable `SAGE_POTRAL_URL` to point to your Sage HR portal. 
+Set the environment variable `SAGE_POTRAL_URL` to point to your Sage HR portal.
+
+### Deployment to Heroku
+
+You can deploy this application to Heroku with just a click on the following button:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https%3A%2F%2Fgithub.com%2FMichi0301%2Fclocker)
 
 ## Api
 
@@ -16,7 +22,7 @@ All requests require: `Content-Type: application/json`
 
 Either submit your credentials via the request payload:
 
-```
+```json
 {
   "username": "HomerS",
   "password": "Doughnut"
@@ -29,12 +35,12 @@ Supported actions:
 
 ### POST /api/sage/clockin
 
-Response: 
+Response:
 
 Success:
 
 Status: `201`
-```
+```json
 {
   "success": true
 }
@@ -46,7 +52,7 @@ Response:
 Success:
 
 Status: `201`
-```
+```json
 {
   "success": true
 }
@@ -59,7 +65,7 @@ Response:
 Success:
 
 Status: `201`
-```
+```json
 {
   "success": true
 }
@@ -72,11 +78,9 @@ Response:
 Success:
 
 Status: `201`
-```
+```json
 {
   "success": true,
   "current_state": "absent"
 }
 ```
-
-
