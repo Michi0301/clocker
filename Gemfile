@@ -60,6 +60,7 @@ gem 'phantomjs', require: 'phantomjs/poltergeist'
 gem 'poltergeist'
 gem 'rubocop'
 gem 'bugsnag'
+gem 'rack-cors', require: 'rack/cors'
 # gem 'selenium-webdriver'
 # gem 'chromedriver-helper'
 
