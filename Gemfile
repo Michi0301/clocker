@@ -53,14 +53,14 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Custom
+gem 'bugsnag'
+gem 'capybara'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
-gem 'capybara'
 gem 'phantomjs', require: 'phantomjs/poltergeist'
 gem 'poltergeist'
-gem 'rubocop'
-gem 'bugsnag'
 gem 'rack-cors', require: 'rack/cors'
+gem 'rubocop'
 # gem 'selenium-webdriver'
 # gem 'chromedriver-helper'
 

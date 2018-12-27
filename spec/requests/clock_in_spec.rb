@@ -1,17 +1,18 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-include SignInHelper
 
 RSpec.feature 'Clocking in', type: :request do
+  include SignInHelper
+
   describe 'A user clocks in' do
     let(:signin) { double('signin') }
     let(:clockin) { double('clockin') }
     let(:headers) { { 'ACCEPT' => 'application/json' } }
     let(:perform_request) do
       post '/api/sage/clockin',
-        params: { username: 'myuser', password: 'mypass', perform_sync: perform_sync },
-        headers: headers
+           params: { username: 'myuser', password: 'mypass', perform_sync: perform_sync },
+           headers: headers
     end
 
     context 'async execution' do
@@ -70,7 +71,7 @@ RSpec.feature 'Clocking in', type: :request do
 
       before do
         mock_successful_signin
-        
+
         allow(::Sage::Clockin).to receive(:new).and_return(clockin)
         allow(clockin).to receive(:call)
         allow(::Sage::Current).to receive(:new).and_return(current)
@@ -80,7 +81,7 @@ RSpec.feature 'Clocking in', type: :request do
       it 'includes the current state' do
         perform_request
 
-        expect(JSON.parse(response.body)).to eq({'success' => true, 'current_state' => 'some-state'})
+        expect(JSON.parse(response.body)).to eq('success' => true, 'current_state' => 'some-state')
       end
     end
   end
