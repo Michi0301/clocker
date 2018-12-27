@@ -3,13 +3,13 @@
 require 'rails_helper'
 include SignInHelper
 
-RSpec.feature 'Clocking in', type: :request do
-  describe 'A user clocks in' do
+RSpec.feature 'Clocking pasue', type: :request do
+  describe 'A user clocks out' do
     let(:signin) { double('signin') }
-    let(:clockin) { double('clockin') }
+    let(:pause) { double('pause') }
     let(:headers) { { 'ACCEPT' => 'application/json' } }
     let(:perform_request) do
-      post '/api/sage/clockin',
+      post '/api/sage/pause',
         params: { username: 'myuser', password: 'mypass', perform_sync: perform_sync },
         headers: headers
     end
@@ -22,8 +22,8 @@ RSpec.feature 'Clocking in', type: :request do
 
         context 'Local logging' do
           before do
-            allow(::Sage::Clockin).to receive(:new).and_return(clockin)
-            allow(clockin).to receive(:call)
+            allow(::Sage::Pause).to receive(:new).and_return(pause)
+            allow(pause).to receive(:call)
           end
 
           it 'Creates a user' do
@@ -35,14 +35,14 @@ RSpec.feature 'Clocking in', type: :request do
           it 'Creates a clock event' do
             expect { perform_request }.to change(ClockEvent, :count).by(1)
 
-            expect(ClockEvent.last.event_type).to eq('clockin')
+            expect(ClockEvent.last.event_type).to eq('pause')
           end
         end
 
         context 'Clock in at 3rd party' do
           it 'Clocks in at the 3rd party' do
-            expect(::Sage::Clockin).to receive(:new).and_return(clockin)
-            expect(clockin).to receive(:call)
+            expect(::Sage::Pause).to receive(:new).and_return(pause)
+            expect(pause).to receive(:call)
 
             perform_request
           end
@@ -66,13 +66,14 @@ RSpec.feature 'Clocking in', type: :request do
 
     context 'sync execution' do
       let(:perform_sync) { true }
+      let(:perform_sync) { true }
       let(:current) { double('current') }
 
       before do
         mock_successful_signin
         
-        allow(::Sage::Clockin).to receive(:new).and_return(clockin)
-        allow(clockin).to receive(:call)
+        allow(::Sage::Pause).to receive(:new).and_return(pause)
+        allow(pause).to receive(:call)
         allow(::Sage::Current).to receive(:new).and_return(current)
         allow(current).to receive(:call).and_return('some-state')
       end

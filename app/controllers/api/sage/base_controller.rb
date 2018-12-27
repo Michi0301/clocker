@@ -43,6 +43,10 @@ module Api
       def render_error(error)
         render json: { success: false, message: error.message }, status: :service_unavailable
       end
+
+      def perform_synchronous?
+        params[:perform_sync].present?
+      end
     end
   end
 end
