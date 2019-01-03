@@ -10,4 +10,10 @@ Rails.application.routes.draw do
       resource :pause, only: :create
     end
   end
+
+  namespace :static, path: nil do
+    namespace :hosting, path: nil do
+      get :ping
+    end
+  end
 end
