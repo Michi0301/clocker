@@ -40,6 +40,7 @@ module Clocker
 
     # Custom configuration
     config.x.sage_portal_url = ENV.fetch('SAGE_POTRAL_URL')
+    config.x.client_url = ENV.fetch('CLIENT_URL')
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
