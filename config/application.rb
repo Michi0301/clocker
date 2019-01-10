@@ -48,4 +48,6 @@ module Clocker
       end
     end
   end
+
+  Rails.application.routes.default_url_options[:host] = ENV.fetch('APP_HOST')
 end
