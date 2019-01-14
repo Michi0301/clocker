@@ -14,6 +14,8 @@ module Support
 
     def finished_all_ajax_requests?
       browser.evaluate_script('jQuery.active').zero?
+
+      sleep 0.2
     end
 
     def ensure_clean_state!
