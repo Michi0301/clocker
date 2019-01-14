@@ -1,25 +1,19 @@
-# frozen_string_literal: true
+Capybara.register_driver(:headless_chrome) do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: { args: %w[headless disable-gpu] }
+  )
 
-require 'capybara'
-require 'capybara/poltergeist'
-
-# Configure Poltergeist to not blow up on websites with js errors aka every website with js
-# See more options at https://github.com/teampoltergeist/poltergeist#customization
-Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, js_errors: false, headers: {
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'
-  })
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :chrome,
+    desired_capabilities: capabilities
+  )
 end
 
-Capybara.default_driver = :poltergeist
+Capybara.configure do |config|
+  config.run_server = true
+  config.default_driver = :headless_chrome
+  config.default_max_wait_time = 30
+end
 
-Capybara.default_max_wait_time = 30
-
-# For visual debugging
-# require 'selenium/webdriver'
-
-# Capybara.register_driver :chrome do |app|
-#   Capybara::Selenium::Driver.new(app, browser: :chrome)
-# end
-
-# Capybara.default_driver = :chrome
+Capybara.javascript_driver = :headless_chrome

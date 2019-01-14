@@ -57,12 +57,11 @@ gem 'bugsnag'
 gem 'capybara'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
-gem 'phantomjs', require: 'phantomjs/poltergeist'
-gem 'poltergeist'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rubocop'
-# gem 'selenium-webdriver'
-# gem 'chromedriver-helper'
+
+gem 'selenium-webdriver'
+gem 'chromedriver-helper'
 
 group :development, :test do
   gem 'dotenv-rails'
