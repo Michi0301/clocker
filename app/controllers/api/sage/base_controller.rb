@@ -37,7 +37,7 @@ module Api
       end
 
       def sign_in_params
-        params.permit(:username, :password)
+        params.permit(:username, :password, :push_token)
       end
 
       def render_error(error)
